@@ -1,2 +1,4 @@
-.node_modules
-.instructions.txt
+
+instructions.txt
+.sequelizerc
+node_modules

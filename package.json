@@ -1,12 +1,36 @@
 {
-  "name": "protfolio_website",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "protfolio-website",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^7.1.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "http-errors": "~1.6.3",
+    "moment": "^2.29.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.3.2",
+    "npm": "8.5.5",
+    "particles.js": "^2.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.0",
+    "pg-hstore": "^2.3.3",
+    "pug": "^3.0.2",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^4.2.0",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6",
+    "sequelize-cli": "^6.4.1"
+  }
 }
