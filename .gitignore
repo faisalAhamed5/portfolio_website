@@ -2,3 +2,4 @@
 instructions.txt
 .sequelizerc
 node_modules
+.env

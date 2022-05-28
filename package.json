@@ -3,15 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "NODE_ENV=production PORT=8000 node ./bin/www",
+    "dev": "NODE_ENV=development PORT=4000 nodemon ./bin/www",
+    "migrate": "npx sequelize-cli db:migrate",
+    "undo-migrate": "npx sequelize-cli db:migrate:undo",
+    "seed": "npx sequelize-cli db:seed:all",
+    "undo-seed": "npx sequelize-cli db:seed:undo",
+    "create-model": "npx sequelize-cli model:generate --name table --attributes firstName:string,lastName:string,email:string",
+    "create-seed": "npx sequelize-cli seed:generate --name demo-data",
+    "create-migration": "npx sequelize-cli migration:generate --name table-change-info"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "connect-session-sequelize": "^7.1.2",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.1",
     "express": "~4.16.1",
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
@@ -27,6 +36,7 @@
     "pug": "^3.0.2",
     "sequelize": "^6.3.5",
     "sqlite3": "^4.2.0",
+    "uuid": "^8.3.2",
     "validator": "^13.1.17"
   },
   "devDependencies": {

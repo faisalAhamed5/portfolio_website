@@ -1,7 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class users extends Model {
+  class user extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,53 +9,59 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //   dept_db.hasMany(models.user_db, {
-      //     foreignKey: "dept_id",
-      //     onDelete: "RESTRICT",
-      //     onUpdate: "CASCADE",
-      //   });
     }
   }
-  users.init(
+  user.init(
     {
-      email: {
+      id: {
         allowNull: false,
-        type: DataTypes.STRING,
         primaryKey: true,
-      },
-      password: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      phone1: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-      },
-      phone2: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUID4,
       },
       firstName: {
+        type: DataTypes.STRING(32),
         allowNull: false,
-        type: DataTypes.STRING,
       },
       lastName: {
+        type: DataTypes.STRING(32),
         allowNull: false,
+      },
+      email: {
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
+      },
+      username: {
+        type: DataTypes.STRING(26),
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING(128),
+        allowNull: false,
+        validate: {
+          len: [8, 64],
+        },
+      },
+      phone: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      phone2: {
+        type: DataTypes.INTEGER,
       },
       address: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      userName: {
-        allowNull: false,
         type: DataTypes.STRING,
       },
     },
     {
       sequelize,
-      modelName: "users",
+      modelName: "user",
+      tableName: "user",
     }
   );
-  return users;
+  return user;
 };
